@@ -30,12 +30,36 @@ Em Java, é uma convenção de nomenclatura (não uma regra obrigatória do comp
 
 ```
 
-Para executar um arquivo java pelo terminal primeiro é necessário fazer a compilação do arquivo com o comando:
-
-`javac PrimeiroPrograma.java`
+Para executar um arquivo java pelo terminal primeiro é necessário fazer a compilação do arquivo com o comando: `javac PrimeiroPrograma.java`
 
 Em seguida executar com:
 `java PrimeiroPrograma`
+
+## Comentários
+No Java, os comentários são utilizados para adicionar explicações ou anotações no código, que não são executadas pelo compilador. Existem duas formas principais de fazer comentários em Java:
+
+1. **Comentário de uma linha**: Utiliza `//` para comentar uma única linha.
+2. **Comentário de múltiplas linhas**: Utiliza `/* */` para comentar várias linhas.
+
+Aqui está um exemplo ilustrativo de como usar ambos os tipos de comentários:
+
+```
+public class PrimeiroPrograma {
+
+      public static void main(String[] args) {
+         // Comentário de uma linha
+
+         /*
+         Comentário de várias linhas
+         System.out.println("Hello, word!!!");
+         System.out.println("Hello, word!!!");
+         System.out.println("Hello, word!!!");
+         */
+
+         System.out.println("Hello, word!!!");
+      }
+   }
+```
 
 
 
