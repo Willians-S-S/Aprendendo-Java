@@ -234,6 +234,152 @@ Em Java existem tipos de referência correspondentes aos tipos primitivos, chama
    Obs: Quando dizemos que variáveis de tipos primitivos são "imutáveis", o que realmente queremos dizer é que, quando você atribui um valor a uma variável de tipo primitivo, esse valor é armazenado diretamente na variável, e qualquer modificação na variável altera o valor diretamente. No entanto, isso não significa que a variável em si não possa ser modificada, mas sim que o valor armazenado na variável é diretamente alterado e não há referências indiretas ou mutações em locais de memória diferentes.
 
 
+## Conversões de tipos
+
+Em Java, a conversão entre tipos primitivos e suas respectivas classes wrapper é uma prática comum, especialmente ao trabalhar com coleções e APIs que requerem objetos. Existem dois conceitos principais para entender: **autoboxing** e **unboxing**.
+
+### Autoboxing e Unboxing
+
+- **Autoboxing**: A conversão automática de um tipo primitivo para o seu tipo de classe wrapper correspondente.
+- **Unboxing**: A conversão automática de um tipo de classe wrapper para o seu tipo primitivo correspondente.
+
+### Exemplos de Autoboxing e Unboxing
+
+#### Autoboxing
+
+Quando você atribui um valor primitivo a uma variável de classe wrapper, o Java automaticamente converte o valor primitivo em um objeto da classe wrapper correspondente.
+
+```java
+public class AutoboxingExample {
+    public static void main(String[] args) {
+        int intValue = 42;
+        Integer integerValue = intValue;  // Autoboxing: int para Integer
+
+        System.out.println("Integer value: " + integerValue);  // Outputs: Integer value: 42
+    }
+}
+```
+
+#### Unboxing
+
+Quando você atribui um objeto de classe wrapper a uma variável de tipo primitivo, o Java automaticamente converte o objeto em seu valor primitivo correspondente.
+
+```java
+public class UnboxingExample {
+    public static void main(String[] args) {
+        Integer integerValue = 42;
+        int intValue = integerValue;  // Unboxing: Integer para int
+
+        System.out.println("Primitive int value: " + intValue);  // Outputs: Primitive int value: 42
+    }
+}
+```
+
+### Conversão Manual entre Tipos Primitivos e Wrappers
+
+Além de autoboxing e unboxing, você pode converter manualmente entre tipos primitivos e wrappers usando métodos fornecidos pelas classes wrapper.
+
+#### Conversão de Primitivo para Wrapper
+
+```java
+public class PrimitiveToWrapper {
+    public static void main(String[] args) {
+        int intValue = 42;
+        Integer integerValue = Integer.valueOf(intValue);  // Manual boxing
+
+        System.out.println("Integer value: " + integerValue);  // Outputs: Integer value: 42
+    }
+}
+```
+
+#### Conversão de Wrapper para Primitivo
+
+```java
+public class WrapperToPrimitive {
+    public static void main(String[] args) {
+        Integer integerValue = 42;
+        int intValue = integerValue.intValue();  // Manual unboxing
+
+        System.out.println("Primitive int value: " + intValue);  // Outputs: Primitive int value: 42
+    }
+}
+```
+
+### Conversão entre Diferentes Tipos Primitivos
+
+Você também pode converter entre diferentes tipos primitivos usando casting e métodos das classes wrapper.
+
+#### Conversão de Inteiro para Float
+
+```java
+public class IntToFloat {
+    public static void main(String[] args) {
+        int intValue = 42;
+        float floatValue = (float) intValue;  // Casting
+
+        System.out.println("Float value: " + floatValue);  // Outputs: Float value: 42.0
+    }
+}
+```
+
+#### Conversão de String para Tipo Primitivo
+
+As classes wrapper fornecem métodos estáticos para converter `String` para tipos primitivos.
+
+```java
+public class StringToPrimitive {
+    public static void main(String[] args) {
+        String intString = "42";
+        int intValue = Integer.parseInt(intString);
+
+        String doubleString = "42.42";
+        double doubleValue = Double.parseDouble(doubleString);
+
+        System.out.println("Converted int value: " + intValue);        // Outputs: Converted int value: 42
+        System.out.println("Converted double value: " + doubleValue);  // Outputs: Converted double value: 42.42
+    }
+}
+```
+
+#### Conversão de Tipo Primitivo para String
+
+Você pode converter tipos primitivos para `String` usando o método `String.valueOf()` ou o método `toString()` das classes wrapper.
+
+```java
+public class PrimitiveToString {
+    public static void main(String[] args) {
+        int intValue = 42;
+        String intString = String.valueOf(intValue);
+
+        double doubleValue = 42.42;
+        String doubleString = Double.toString(doubleValue);
+
+        System.out.println("String representation of int: " + intString);         // Outputs: String representation of int: 42
+        System.out.println("String representation of double: " + doubleString);   // Outputs: String representation of double: 42.42
+    }
+}
+```
+
+### Conversão de Wrappers entre Diferentes Tipos Primitivos
+
+Você pode usar os métodos de conversão fornecidos pelas classes wrapper para converter entre diferentes tipos de classes wrapper.
+
+#### Exemplo de Conversão de Integer para Double
+
+```java
+public class WrapperConversion {
+    public static void main(String[] args) {
+        Integer integerValue = 42;
+        Double doubleValue = integerValue.doubleValue();
+
+        System.out.println("Converted double value: " + doubleValue);  // Outputs: Converted double value: 42.0
+    }
+}
+```
+
+
+
+
 ## Package (Pacote) e Import (Importação)
 Em Java, um pacote (package) é um mecanismo que agrupa classes e interfaces relacionadas. Pacotes são usados para organizar o código de maneira modular e hierárquica, evitando conflitos de nomes e facilitando a manutenção e reutilização do código.
 
