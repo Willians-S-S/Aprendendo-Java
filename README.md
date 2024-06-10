@@ -60,7 +60,7 @@ public class PrimeiroPrograma {
       }
    }
 ```
-### Variáveis
+## Variáveis
 Java possui dois tipos de dados que são divididos em tipos primitivos e tipos por referência.
 
 
@@ -232,6 +232,137 @@ Em Java existem tipos de referência correspondentes aos tipos primitivos, chama
    - **Tipos de Referência**: Podem ser mutáveis ou imutáveis, dependendo da implementação da classe (por exemplo, `String` é imutável, mas `StringBuilder` é mutável).
 
    Obs: Quando dizemos que variáveis de tipos primitivos são "imutáveis", o que realmente queremos dizer é que, quando você atribui um valor a uma variável de tipo primitivo, esse valor é armazenado diretamente na variável, e qualquer modificação na variável altera o valor diretamente. No entanto, isso não significa que a variável em si não possa ser modificada, mas sim que o valor armazenado na variável é diretamente alterado e não há referências indiretas ou mutações em locais de memória diferentes.
+
+
+## Package (Pacote) e Import (Importação)
+Em Java, um pacote (package) é um mecanismo que agrupa classes e interfaces relacionadas. Pacotes são usados para organizar o código de maneira modular e hierárquica, evitando conflitos de nomes e facilitando a manutenção e reutilização do código.
+
+**Benefícios de Usar Pacotes**
+
+1. **Organização**: Pacotes ajudam a organizar classes e interfaces em namespaces relacionados, tornando o projeto mais fácil de navegar e gerenciar.
+2. **Evitar Conflitos de Nome**: Pacotes evitam conflitos de nome, permitindo que diferentes desenvolvedores trabalhem em classes com os mesmos nomes sem colisões.
+3. **Controle de Acesso**: Pacotes fornecem um mecanismo para controle de acesso, permitindo especificar quais classes e membros são acessíveis fora do pacote.
+4. **Modularidade**: Pacotes facilitam a modularização do código, permitindo a separação de funcionalidades em componentes distintos.
+
+**Declaração de um Pacote**
+
+Para declarar que uma classe pertence a um pacote, usa-se a palavra-chave `package` no início do arquivo Java, seguida pelo nome do pacote. O nome do pacote deve corresponder à estrutura de diretórios onde o arquivo está localizado.
+
+**Exemplo** 
+
+1. Estrutura de Diretórios:
+    ```plaintext
+    src/
+     ├── com/
+     │    ├── mycompany/
+     │    │    ├── myapp/
+     │    │    │    ├── Main.java
+     │    │    │    └── utils/
+     │    │    │         ├── MathUtils.java
+     │    │    │         └── StringUtils.java
+    ```
+
+2. `Main.java`:
+    ```java
+    package com.mycompany.myapp;
+
+    import com.mycompany.myapp.utils.MathUtils;
+    import com.mycompany.myapp.utils.StringUtils;
+
+    public class Main {
+        public static void main(String[] args) {
+            int sum = MathUtils.add(5, 10);
+            String reversed = StringUtils.reverse("Hello");
+
+            System.out.println("Sum: " + sum);
+            System.out.println("Reversed: " + reversed);
+        }
+    }
+    ```
+
+3. `MathUtils.java`:
+    ```java
+    package com.mycompany.myapp.utils;
+
+    public class MathUtils {
+        public static int add(int a, int b) {
+            return a + b;
+        }
+    }
+    ```
+
+4. `StringUtils.java`:
+    ```java
+    package com.mycompany.myapp.utils;
+
+    public class StringUtils {
+        public static String reverse(String str) {
+            return new StringBuilder(str).reverse().toString();
+        }
+    }
+    ```
+
+**Pacotes Java Padrão**
+
+Java possui muitos pacotes padrão que fornecem diversas funcionalidades. Alguns dos mais comuns incluem:
+
+1. **java.lang**: Inclui classes fundamentais como `String`, `Math`, `Integer`, `System`, etc. Este pacote é importado automaticamente.
+2. **java.util**: Inclui classes utilitárias como `ArrayList`, `HashMap`, `Date`, `Calendar`, etc.
+3. **java.io**: Inclui classes para entrada e saída, como `File`, `InputStream`, `OutputStream`, etc.
+4. **java.nio**: Inclui classes para entrada e saída de alta performance e operações de buffer.
+5. **java.net**: Inclui classes para operações de rede, como `Socket`, `ServerSocket`, `URL`, etc.
+
+**Importação de Pacotes**
+
+Para usar classes de um pacote diferente, você precisa importá-las usando a palavra-chave `import`.
+
+**Importação Específica**
+
+```java
+import java.util.ArrayList;
+
+public class ImportExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+    }
+}
+```
+
+**Importação de Pacote Inteiro**
+
+```java
+import java.util.*;
+
+public class ImportExample {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        HashMap<String, Integer> map = new HashMap<>();
+    }
+}
+```
+
+**Controle de Acesso com Pacotes**
+
+Java permite controlar a visibilidade de classes e membros de classes (métodos, variáveis) usando modificadores de acesso:
+
+1. **public**: A classe ou membro é acessível de qualquer outro pacote.
+2. **protected**: O membro é acessível dentro do mesmo pacote e por subclasses.
+3. **default (sem modificador)**: O membro é acessível apenas dentro do mesmo pacote.
+4. **private**: O membro é acessível apenas dentro da mesma classe.
+
+**Exemplo de Controle de Acesso**
+
+```java
+package com.mycompany.myapp;
+
+public class MyClass {
+    public int publicVar;
+    protected int protectedVar;
+    int defaultVar; // Acesso de pacote
+    private int privateVar;
+}
+```
+##
 
 
 
