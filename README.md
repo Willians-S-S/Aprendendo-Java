@@ -362,7 +362,593 @@ public class MyClass {
     private int privateVar;
 }
 ```
-##
+## String
+
+Em Java, String é uma classe imutável usada para representar uma sequência de caracteres. A classe String está localizada no pacote java.lang e, por isso, é automaticamente importada em todos os programas Java. Strings são amplamente utilizadas em programas para armazenar e manipular texto.
+
+### Características das Strings
+
+1. **Imutabilidade**: Uma vez que um objeto `String` é criado, seu valor não pode ser alterado. Operações que parecem modificar uma `String` na verdade criam um novo objeto `String`.
+2. **Pool de Strings**: Java mantém um pool de strings para reutilização de objetos `String` imutáveis. Isso ajuda a economizar memória e melhora a performance.
+3. **Suporte a Unicode**: `String` em Java suporta caracteres Unicode, permitindo representar uma ampla gama de caracteres de diferentes idiomas e símbolos.
+
+### Criação de Strings
+
+Existem várias formas de criar strings em Java:
+
+1. **Literais de Strings**:
+   ```java
+   String str1 = "Hello, World!";
+   ```
+
+2. **Usando o operador `new`**:
+   ```java
+   String str2 = new String("Hello, World!");
+   ```
+
+3. **Convertendo Arrays de Caracteres**:
+   ```java
+   char[] charArray = {'H', 'e', 'l', 'l', 'o'};
+   String str3 = new String(charArray);
+   ```
+### Métodos da classe String
+Abaixo estão os exemplos de métodos da classe `String` em Java, com descrição, tipo de retorno e exemplo de retorno:
+
+
+### 1. `charAt(int index)`
+**Descrição**: Retorna o caractere no índice especificado.
+**Tipo de Retorno**: `char`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        char ch = str.charAt(1);
+        System.out.println("charAt: " + ch); // Outputs: e
+    }
+}
+```
+
+### 2. `codePointAt(int index)`
+**Descrição**: Retorna o valor Unicode do caractere no índice especificado.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int codePoint = str.codePointAt(1);
+        System.out.println("codePointAt: " + codePoint); // Outputs: 101
+    }
+}
+```
+
+### 3. `codePointBefore(int index)`
+**Descrição**: Retorna o valor Unicode do caractere antes do índice especificado.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int codePoint = str.codePointBefore(1);
+        System.out.println("codePointBefore: " + codePoint); // Outputs: 72
+    }
+}
+```
+
+### 4. `codePointCount(int beginIndex, int endIndex)`
+**Descrição**: Retorna o número de valores Unicode na string entre os índices especificados.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int count = str.codePointCount(0, str.length());
+        System.out.println("codePointCount: " + count); // Outputs: 5
+    }
+}
+```
+
+### 5. `compareTo(String anotherString)`
+**Descrição**: Compara duas strings lexicograficamente.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "World";
+        int result = str1.compareTo(str2);
+        System.out.println("compareTo: " + result); // Outputs a negative number
+    }
+}
+```
+
+### 6. `compareToIgnoreCase(String str)`
+**Descrição**: Compara duas strings lexicograficamente, ignorando diferenças de maiúsculas e minúsculas.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "HELLO";
+        int result = str1.compareToIgnoreCase(str2);
+        System.out.println("compareToIgnoreCase: " + result); // Outputs: 0
+    }
+}
+```
+
+### 7. `concat(String str)`
+**Descrição**: Adiciona uma string ao final de outra string.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = " World";
+        String result = str1.concat(str2);
+        System.out.println("concat: " + result); // Outputs: Hello World
+    }
+}
+```
+
+### 8. `contains(CharSequence s)`
+**Descrição**: Verifica se uma string contém uma sequência de caracteres.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        boolean result = str.contains("World");
+        System.out.println("contains: " + result); // Outputs: true
+    }
+}
+```
+
+### 9. `contentEquals(CharSequence cs)`
+**Descrição**: Verifica se uma string contém a mesma sequência de caracteres que a especificada.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        boolean result = str.contentEquals("Hello World");
+        System.out.println("contentEquals: " + result); // Outputs: true
+    }
+}
+```
+
+### 10. `copyValueOf(char[] data)`
+**Descrição**: Retorna uma string que representa os caracteres do array de caracteres.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        char[] data = {'H', 'e', 'l', 'l', 'o'};
+        String str = String.copyValueOf(data);
+        System.out.println("copyValueOf: " + str); // Outputs: Hello
+    }
+}
+```
+
+### 11. `endsWith(String suffix)`
+**Descrição**: Verifica se uma string termina com os caracteres especificados.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        boolean result = str.endsWith("World");
+        System.out.println("endsWith: " + result); // Outputs: true
+    }
+}
+```
+
+### 12. `equals(Object anObject)`
+**Descrição**: Compara duas strings. Retorna verdadeiro se as strings são iguais, e falso se não são.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "Hello";
+        String str2 = "Hello";
+        boolean result = str1.equals(str2);
+        System.out.println("equals: " + result); // Outputs: true
+    }
+}
+```
+
+### 13. `equalsIgnoreCase(String anotherString)`
+**Descrição**: Compara duas strings, ignorando considerações de maiúsculas e minúsculas.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "hello";
+        String str2 = "HELLO";
+        boolean result = str1.equalsIgnoreCase(str2);
+        System.out.println("equalsIgnoreCase: " + result); // Outputs: true
+    }
+}
+```
+
+### 14. `format(String format, Object... args)`
+**Descrição**: Retorna uma string formatada usando a string de formato e os argumentos especificados.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = String.format("Hello, %s!", "World");
+        System.out.println("format: " + str); // Outputs: Hello, World!
+    }
+}
+```
+
+### 15. `getBytes()`
+**Descrição**: Converte uma string em um array de bytes.
+**Tipo de Retorno**: `byte[]`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        byte[] bytes = str.getBytes();
+        System.out.println("getBytes: " + java.util.Arrays.toString(bytes)); // Outputs byte array
+    }
+}
+```
+
+### 16. `getChars(int srcBegin, int srcEnd, char[] dst, int dstBegin)`
+**Descrição**: Copia caracteres de uma string para um array de caracteres.
+**Tipo de Retorno**: `void`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        char[] chars = new char[5];
+        str.getChars(0, 5, chars, 0);
+        System.out.println("getChars: " + java.util.Arrays.toString(chars)); // Outputs: [H, e, l, l, o]
+    }
+}
+```
+
+### 17. `hashCode()`
+**Descrição**: Retorna o código hash de uma string.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int hashCode = str.hashCode();
+        System.out.println("hashCode: " + hashCode); // Outputs hash code
+    }
+}
+```
+
+### 18. `indexOf(String str)`
+**Descrição**: Retorna a posição da primeira ocorrência dos caracteres especificados em uma string.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        int index = str.indexOf("World");
+        System.out.println("indexOf: " + index); // Outputs: 6
+    }
+}
+```
+
+### 19. `intern()`
+**Descrição**: Retorna a representação canônica do objeto string.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = new String("Hello");
+        String str2 = str1.intern();
+        System.out.println("intern: " + (str1 == str2)); // Outputs: false
+    }
+}
+```
+
+### 20. `isEmpty()`
+**Descrição**: Verifica se uma string está vazia.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "";
+        boolean result = str.isEmpty();
+        System.out.println("
+
+isEmpty: " + result); // Outputs: true
+    }
+}
+```
+
+### 21. `join(CharSequence delimiter, CharSequence... elements)`
+**Descrição**: Junta uma ou mais strings com um delimitador especificado.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String result = String.join(", ", "Hello", "World");
+        System.out.println("join: " + result); // Outputs: Hello, World
+    }
+}
+```
+
+### 22. `lastIndexOf(String str)`
+**Descrição**: Retorna a posição da última ocorrência dos caracteres especificados em uma string.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World World";
+        int index = str.lastIndexOf("World");
+        System.out.println("lastIndexOf: " + index); // Outputs: 12
+    }
+}
+```
+
+### 23. `length()`
+**Descrição**: Retorna o comprimento de uma string especificada.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int length = str.length();
+        System.out.println("length: " + length); // Outputs: 5
+    }
+}
+```
+
+### 24. `matches(String regex)`
+**Descrição**: Procura uma correspondência na string para uma expressão regular e retorna a correspondência.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "12345";
+        boolean result = str.matches("\\d+");
+        System.out.println("matches: " + result); // Outputs: true
+    }
+}
+```
+
+### 25. `offsetByCodePoints(int index, int codePointOffset)`
+**Descrição**: Retorna o índice dentro desta String que está deslocado a partir do índice dado pelo número de pontos de código.
+**Tipo de Retorno**: `int`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        int index = str.offsetByCodePoints(0, 2);
+        System.out.println("offsetByCodePoints: " + index); // Outputs: 2
+    }
+}
+```
+
+### 26. `regionMatches(int toffset, String other, int ooffset, int len)`
+**Descrição**: Testa se duas regiões de string são iguais.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str1 = "Hello World";
+        String str2 = "World";
+        boolean result = str1.regionMatches(6, str2, 0, 5);
+        System.out.println("regionMatches: " + result); // Outputs: true
+    }
+}
+```
+
+### 27. `replace(char oldChar, char newChar)`
+**Descrição**: Substitui todas as ocorrências de um caractere em uma string por outro caractere.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String result = str.replace('o', 'a');
+        System.out.println("replace: " + result); // Outputs: Hella Warld
+    }
+}
+```
+
+### 28. `replaceAll(String regex, String replacement)`
+**Descrição**: Substitui cada substring desta string que coincide com a expressão regular fornecida pelo substituto fornecido.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "abc123abc";
+        String result = str.replaceAll("\\d", "X");
+        System.out.println("replaceAll: " + result); // Outputs: abcXXXabc
+    }
+}
+```
+
+### 29. `replaceFirst(String regex, String replacement)`
+**Descrição**: Substitui a primeira ocorrência de uma substring que coincide com a expressão regular fornecida pelo substituto fornecido.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "abc123abc";
+        String result = str.replaceFirst("\\d", "X");
+        System.out.println("replaceFirst: " + result); // Outputs: abcX23abc
+    }
+}
+```
+
+### 30. `split(String regex)`
+**Descrição**: Divide uma string em um array de substrings.
+**Tipo de Retorno**: `String[]`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "apple,orange,banana";
+        String[] fruits = str.split(",");
+        System.out.println("split: " + java.util.Arrays.toString(fruits)); // Outputs: [apple, orange, banana]
+    }
+}
+```
+
+### 31. `startsWith(String prefix)`
+**Descrição**: Verifica se uma string começa com os caracteres especificados.
+**Tipo de Retorno**: `boolean`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        boolean result = str.startsWith("Hello");
+        System.out.println("startsWith: " + result); // Outputs: true
+    }
+}
+```
+
+### 32. `subSequence(int beginIndex, int endIndex)`
+**Descrição**: Retorna uma nova sequência de caracteres que é uma subsequência desta sequência.
+**Tipo de Retorno**: `CharSequence`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        CharSequence subSeq = str.subSequence(0, 5);
+        System.out.println("subSequence: " + subSeq); // Outputs: Hello
+    }
+}
+```
+
+### 33. `substring(int beginIndex)`
+**Descrição**: Retorna uma nova string que é uma substring da string especificada.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello World";
+        String subStr = str.substring(6);
+        System.out.println("substring: " + subStr); // Outputs: World
+    }
+}
+```
+
+### 34. `toCharArray()`
+**Descrição**: Converte esta string em um novo array de caracteres.
+**Tipo de Retorno**: `char[]`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        char[] chars = str.toCharArray();
+        System.out.println("toCharArray: " + java.util.Arrays.toString(chars)); // Outputs: [H, e, l, l, o]
+    }
+}
+```
+
+### 35. `toLowerCase()`
+**Descrição**: Converte uma string para letras minúsculas.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "HELLO";
+        String lowerStr = str.toLowerCase();
+        System.out.println("toLowerCase: " + lowerStr); // Outputs: hello
+    }
+}
+```
+
+### 36. `toString()`
+**Descrição**: Retorna o valor de um objeto String.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "Hello";
+        String toString = str.toString();
+        System.out.println("toString: " + toString); // Outputs: Hello
+    }
+}
+```
+
+### 37. `toUpperCase()`
+**Descrição**: Converte uma string para letras maiúsculas.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "hello";
+        String upperStr = str.toUpperCase();
+        System.out.println("toUpperCase: " + upperStr); // Outputs: HELLO
+    }
+}
+```
+
+### 38. `trim()`
+**Descrição**: Remove espaços em branco dos dois lados de uma string.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        String str = "  Hello World  ";
+        String trimmedStr = str.trim();
+        System.out.println("trim: " + trimmedStr); // Outputs: Hello World
+    }
+}
+```
+
+### 39. `valueOf(Object obj)`
+**Descrição**: Retorna a representação em string do valor especificado.
+**Tipo de Retorno**: `String`
+
+```java
+public class StringExample {
+    public static void main(String[] args) {
+        int value = 123;
+        String str = String.valueOf(value);
+        System.out.println("valueOf: " + str); // Outputs: 123
+    }
+}
+```
+
+
 
 
 
