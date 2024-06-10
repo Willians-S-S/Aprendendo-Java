@@ -361,7 +361,160 @@ public class MyClass {
     int defaultVar; // Acesso de pacote
     private int privateVar;
 }
+
 ```
+## Entrada de dados pelo terminal
+Em Java, a entrada de dados pelo terminal pode ser feita de várias maneiras, sendo a mais comum a utilização da classe `Scanner` da biblioteca `java.util`. Ela suporta a leitura de vários tipos de dados, tornando-a uma ferramenta poderosa para interações básicas com o usuário.. Abaixo estão exemplos de como utilizar a classe `Scanner` para ler diferentes tipos de dados do terminal.
+
+### Importação da Classe Scanner
+
+Primeiro, você precisa importar a classe `Scanner`:
+
+```java
+import java.util.Scanner;
+```
+
+### Exemplos de Leitura de Diferentes Tipos de Dados
+
+#### 1. Leitura de uma String
+
+```java
+import java.util.Scanner;
+
+public class ReadStringExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine(); // Lê uma linha completa de entrada
+
+        System.out.println("You entered: " + input);
+    }
+}
+```
+
+#### 2. Leitura de um Inteiro
+
+```java
+import java.util.Scanner;
+
+public class ReadIntExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt(); // Lê um inteiro
+
+        System.out.println("You entered: " + number);
+    }
+}
+```
+
+#### 3. Leitura de um Float
+
+```java
+import java.util.Scanner;
+
+public class ReadFloatExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter a float: ");
+        float number = scanner.nextFloat(); // Lê um número float
+
+        System.out.println("You entered: " + number);
+    }
+}
+```
+
+#### 4. Leitura de um Double
+
+```java
+import java.util.Scanner;
+
+public class ReadDoubleExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter a double: ");
+        double number = scanner.nextDouble(); // Lê um número double
+
+        System.out.println("You entered: " + number);
+    }
+}
+```
+
+#### 5. Leitura de um Caractere
+
+```java
+import java.util.Scanner;
+
+public class ReadCharExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter a character: ");
+        char character = scanner.next().charAt(0); // Lê o primeiro caractere de uma string
+
+        System.out.println("You entered: " + character);
+    }
+}
+```
+
+#### 6. Leitura de um Boolean
+
+```java
+import java.util.Scanner;
+
+public class ReadBooleanExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter a boolean: ");
+        boolean bool = scanner.nextBoolean(); // Lê um valor booleano
+
+        System.out.println("You entered: " + bool);
+    }
+}
+```
+
+### Tratamento de Erros
+
+Ao usar a classe `Scanner`, é importante estar ciente de possíveis exceções que podem ser lançadas, como `InputMismatchException` se a entrada não for do tipo esperado. Aqui está um exemplo de como tratar essa exceção:
+
+```java
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class SafeReadIntExample {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Cria um objeto Scanner
+
+        System.out.print("Enter an integer: ");
+        try {
+            int number = scanner.nextInt(); // Lê um inteiro
+            System.out.println("You entered: " + number);
+        } catch (InputMismatchException e) {
+            System.out.println("That's not a valid integer.");
+        }
+    }
+}
+```
+
+### Encerrando o Scanner
+
+Após terminar de usar o `Scanner`, é uma boa prática fechá-lo para liberar os recursos associados. Isso pode ser feito chamando o método `close()`:
+
+```java
+scanner.close();
+```
+
+No entanto, você deve ter cuidado ao fechar o `Scanner` que lê da entrada padrão (`System.in`), pois fechá-lo também fecha a entrada padrão, o que pode causar problemas se você precisar ler mais entradas posteriormente no programa.
+
+
+
+
+
 ## String
 
 Em Java, String é uma classe imutável usada para representar uma sequência de caracteres. A classe String está localizada no pacote java.lang e, por isso, é automaticamente importada em todos os programas Java. Strings são amplamente utilizadas em programas para armazenar e manipular texto.
