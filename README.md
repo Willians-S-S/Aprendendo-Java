@@ -20,7 +20,7 @@ Em Java, é uma convenção de nomenclatura (não uma regra obrigatória do comp
    - **Devem ser totalmente em maiúsculas** com palavras separadas por underscores.
    - Exemplo: `MAX_VALUE`, `PI`.
 
-```
+```java
    public class PrimeiroPrograma {
 
       public static void main(String[] args) {
@@ -43,7 +43,7 @@ No Java, os comentários são utilizados para adicionar explicações ou anotaç
 
 Aqui está um exemplo ilustrativo de como usar ambos os tipos de comentários:
 
-```
+```java
 public class PrimeiroPrograma {
 
       public static void main(String[] args) {
