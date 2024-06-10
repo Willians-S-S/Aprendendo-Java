@@ -508,10 +508,144 @@ Após terminar de usar o `Scanner`, é uma boa prática fechá-lo para liberar o
 ```java
 scanner.close();
 ```
+No entanto, é preciso ter cuidado ao fechar o `Scanner` que lê da entrada padrão (`System.in`), pois fechá-lo também fecha a entrada padrão, o que pode causar problemas se precisar ler mais entradas posteriormente no programa.
 
-No entanto, você deve ter cuidado ao fechar o `Scanner` que lê da entrada padrão (`System.in`), pois fechá-lo também fecha a entrada padrão, o que pode causar problemas se você precisar ler mais entradas posteriormente no programa.
+
+## Saída de dados pelo terminal
+
+Em Java, a saída de dados pelo terminal é feita principalmente usando a classe `System`, especificamente o objeto `System.out`, que é uma instância de `PrintStream`. Aqui estão algumas maneiras comuns de realizar a saída de dados pelo terminal em Java:
+
+### Métodos Comuns de Saída
+
+1. **System.out.print()**: Imprime texto no terminal sem uma nova linha no final.
+2. **System.out.println()**: Imprime texto no terminal seguido por uma nova linha.
+3. **System.out.printf()**: Imprime texto formatado no terminal.
+
+### Exemplos Detalhados
+
+#### 1. `System.out.print()`
+
+O método `print()` imprime o texto sem adicionar uma nova linha no final. Se você usar múltiplas chamadas a `print()`, todas as saídas serão impressas na mesma linha.
+
+```java
+public class PrintExample {
+    public static void main(String[] args) {
+        System.out.print("Hello, ");
+        System.out.print("World!");
+        // Saída: Hello, World!
+    }
+}
+```
+
+#### 2. `System.out.println()`
+
+O método `println()` imprime o texto seguido por uma nova linha. Cada chamada a `println()` resultará em uma nova linha no terminal.
+
+```java
+public class PrintlnExample {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println("Welcome to Java programming.");
+        // Saída:
+        // Hello, World!
+        // Welcome to Java programming.
+    }
+}
+```
+
+#### 3. `System.out.printf()`
+
+O método `printf()` permite a impressão de texto formatado. Ele é útil para criar saídas mais estruturadas e legíveis. Você pode usar especificadores de formato para controlar a apresentação dos dados.
+
+```java
+public class PrintfExample {
+    public static void main(String[] args) {
+        int age = 25;
+        String name = "John";
+        double salary = 12345.678;
+
+        System.out.printf("Name: %s, Age: %d, Salary: %.2f%n", name, age, salary);
+        // Saída: Name: John, Age: 25, Salary: 12345.68
+    }
+}
+```
+
+### Especificadores de Formato
+
+Ao usar `printf()`, você pode utilizar vários especificadores de formato para controlar a formatação da saída:
+
+- `%d` para inteiros
+- `%s` para strings
+- `%f` para números de ponto flutuante
+- `%n ou \n` para nova linha (independente do sistema operacional)
+- `%t` para data e hora
+
+#### Exemplo com Diferentes Especificadores
+
+```java
+public class FormatExample {
+    public static void main(String[] args) {
+        int intValue = 123;
+        double doubleValue = 45.6789;
+        String stringValue = "Hello";
+
+        System.out.printf("Integer: %d%n", intValue);
+        System.out.printf("Double: %.2f%n", doubleValue);
+        System.out.printf("String: %s%n", stringValue);
+        // Saída:
+        // Integer: 123
+        // Double: 45.68
+        // String: Hello
+    }
+}
+```
 
 
+Esses métodos cobrem as formas básicas de saída de dados pelo terminal em Java. Dependendo da necessidade, você pode usar `print()`, `println()`, ou `printf()` para produzir a saída desejada. Aqui está um resumo:
+
+- Use `System.out.print()` para imprimir sem uma nova linha.
+- Use `System.out.println()` para imprimir com uma nova linha.
+- Use `System.out.printf()` para imprimir texto formatado.
+
+### Exemplo Completo
+
+Aqui está um exemplo completo que demonstra todas as formas de saída discutidas:
+
+```java
+public class OutputExample {
+    public static void main(String[] args) {
+        // Usando print
+        System.out.print("Esta é uma linha sem nova linha.");
+        System.out.print(" Continua na mesma linha.\n");
+
+        // Usando println
+        System.out.println("Esta é uma linha com nova linha.");
+        System.out.println("Outra linha com nova linha.");
+
+        // Usando printf
+        int intValue = 42;
+        double doubleValue = 3.14159;
+        String stringValue = "Java";
+
+        System.out.printf("Integer: %d%n", intValue);
+        System.out.printf("Double: %.2f%n", doubleValue);
+        System.out.printf("String: %s%n", stringValue);
+    }
+}
+```
+
+Saída:
+
+```
+Esta é uma linha sem nova linha. Continua na mesma linha.
+Esta é uma linha com nova linha.
+Outra linha com nova linha.
+Integer: 42
+Double: 3.14
+String: Java
+```
+
+Esses métodos fornecem flexibilidade e controle sobre como você exibe dados no terminal em Java.
 
 
 
